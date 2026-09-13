@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me — Freddie San Lorenzo</title>
+<link rel="icon" href="logo.gif" type="image/gif">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --bg:           #0B0A08;
+    --surface:      #17140F;
+    --border:       #2C271C;
+    --rust:         #C24C34;
+    --amber:        #D9A036;
+    --terminal:     #6B9476;
+    --text:         #F2EAD8;
+    --text-muted:   #9C8F79;
+
+    --font-display: 'Bitter', serif;
+    --font-body:    'Inter', sans-serif;
+    --font-mono:    'JetBrains Mono', monospace;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection{ background: var(--amber); color: var(--bg); }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  }
+
+  a{ color: inherit; }
+  h1,h2,h3{ font-family: var(--font-display); margin: 0; font-weight: 600; }
+  p{ margin: 0; }
+  img{ max-width: 100%; display: block; }
+
+  /* nav */
+  .nav-wrap{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .navbar{
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 1.1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .nav-logo{ display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+  .nav-logo img{ width: 34px; height: 34px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 1px solid var(--border); }
+  .nav-logo span{ font-family: var(--font-display); font-weight: 700; font-size: 1rem; letter-spacing: 0.01em; }
+  .nav-links{ display: flex; gap: 1.7rem; flex-wrap: wrap; }
+  .nav-links a{
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.92rem;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .nav-links a:hover{ color: var(--text); }
+  .nav-links a.active{ color: var(--text); border-color: var(--amber); }
+
+  /* layout */
+  .page-head{ max-width: 740px; margin: 0 auto; padding: 3.2rem 1.5rem 0.4rem; }
+  .page-head .kicker{
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--rust);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 0.9rem;
+  }
+  .page-head h1{ font-size: clamp(1.9rem, 4vw, 2.5rem); }
+  .page-head p{ color: var(--text-muted); margin-top: 0.7rem; max-width: 56ch; }
+
+  section{ max-width: 1040px; margin: 0 auto; padding: 2.2rem 1.5rem 4.5rem; }
+  .narrow{ max-width: 740px; }
+
+  .section-head{ margin-bottom: 1.6rem; }
+  .section-head h2{ font-size: clamp(1.5rem, 3vw, 2rem); }
+  .section-head p{ color: var(--text-muted); margin-top: 0.5rem; max-width: 60ch; }
+
+  .card{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.6rem;
+  }
+
+  .btn{
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: 4px;
+    border: 1px solid var(--text);
+    color: var(--text);
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    background: transparent;
+    transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+  }
+  .btn:hover{ border-color: var(--rust); color: var(--rust); }
+  .btn.primary{ background: var(--rust); border-color: var(--rust); color: #0B0A08; }
+  .btn.primary:hover{ background: #DE5B40; border-color: #DE5B40; color: #0B0A08; }
+
+  .spec-row{ display: flex; flex-wrap: wrap; gap: 1.4rem 2.2rem; font-family: var(--font-mono); font-size: 0.84rem; }
+  .spec .k{ display: block; color: var(--text-muted); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.15rem; }
+  .spec .v{ color: var(--text); }
+
+  footer{ text-align: center; padding: 2.4rem 1.5rem 3.2rem; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.8rem; border-top: 1px solid var(--border); }
+
+  /* shared vintage photo tint */
+  .photo-tint{ filter: sepia(0.16) saturate(0.92) contrast(1.03); }
+
+  .motto{
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 600;
+    color: var(--text);
+    border-left: 3px solid var(--rust);
+    padding-left: 1.2rem;
+    margin: 2rem 0 0;
+    max-width: 60ch;
+  }
+
+  @media (max-width: 720px){
+    section, .page-head{ padding-left: 1.2rem; padding-right: 1.2rem; }
+  }
+
+  .about-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; margin-top: 2rem; }
+  .about-grid .card h3{ font-family: var(--font-display); font-size: 1.02rem; color: var(--rust); margin-bottom: 0.5rem; }
+  .about-grid .card p{ color: var(--text-muted); font-size: 0.95rem; }
+  @media (max-width: 720px){ .about-grid{ grid-template-columns: 1fr; } }
+
+</style>
+</head>
+<body>
+
+  <div class="nav-wrap">
+    <nav class="navbar" aria-label="Primary">
+      <a class="nav-logo" href="index.html">
+        <img src="logo.gif" alt="Freddie's logo">
+        <span>Freddie San Lorenzo</span>
+      </a>
+      <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="skills.html">Skills &amp; FLOSS</a>
+      <a href="hobbies.html">Hobbies</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="page-head">
+    <span class="kicker">File 01 — Rider profile</span>
+    <h1>About Me</h1>
+    <p>Background, goals, and what I'm into outside of class.</p>
+  </div>
+
+  <section class="narrow">
+    <div class="spec-row" style="margin-bottom: 2rem;">
+      <div class="spec"><span class="k">Name</span><span class="v">Freddie Aydhell James I. San Lorenzo</span></div>
+      <div class="spec"><span class="k">Program</span><span class="v">BSIT</span></div>
+      <div class="spec"><span class="k">School</span><span class="v">ACLC Daet</span></div>
+      <div class="spec"><span class="k">Age</span><span class="v">22</span></div>
+      <div class="spec"><span class="k">Birthday</span><span class="v">November</span></div>
+    </div>
+
+    <p class="motto">One day, but not today.</p>
+
+    <div class="about-grid">
+      <div class="card">
+        <h3>Background</h3>
+        <p>A BSIT student at ACLC Daet who got into computers the same way some people get into old bikes — by taking things apart to see how they run.</p>
+      </div>
+      <div class="card">
+        <h3>Goals</h3>
+        <p>Finish the degree strong, get real hands-on experience building web software, and keep learning the tools the open-source community builds and shares.</p>
+      </div>
+      <div class="card">
+        <h3>Interests</h3>
+        <p>Web development, classic motorcycles and everything about how they're built, and the kind of tinkering that applies to both engines and code.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>Built with vanilla HTML, CSS &amp; JS — no frameworks required.</footer>
+
+</body>
+</html>
